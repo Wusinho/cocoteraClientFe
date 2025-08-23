@@ -1,0 +1,40 @@
+<!-- Lanzador flotante -->
+<button
+  class="launcher"
+  (click)="toggle()"
+  aria-label="Abrir chat Cocotera"
+  [attr.aria-expanded]="open"
+  aria-controls="cocotera-chat-panel"
+  type="button"
+>
+  <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+    <path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H8l-4 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+  </svg>
+  <span class="badge" *ngIf="unread > 0">{{ unread }}</span>
+</button>
+
+<!-- Panel -->
+<div
+  id="cocotera-chat-panel"
+  class="panel"
+  *ngIf="open"
+  role="dialog"
+  aria-label="Chat Cocotera"
+>
+  <div class="header">
+    <div class="title">Cocotera • Info & ayuda</div>
+    <button class="close" (click)="close()" aria-label="Cerrar chat" type="button">×</button>
+  </div>
+
+<div class="messages" #messages>
+  <div *ngFor="let m of msgs" class="msg" [class.user]="m.role==='user'">
+    <div class="bubble">{{ m.text }}</div>
+  </div>
+  <div class="typing" *ngIf="loading">Coco está escribiendo…</div>
+</div>
+
+<form (ngSubmit)="send()" class="composer">
+  <input #msgInput [(ngModel)]="input" name="msg" placeholder="Escribe 1, 2, 3 o 0 para menú…" autocomplete="off" />
+  <button type="submit">Enviar</button>
+</form>
+</div>

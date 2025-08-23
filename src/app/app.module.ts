@@ -18,6 +18,7 @@ import { DetalleProductoComponent } from './features/detalle-producto/detalle-pr
 import { OrdenCompletaComponent } from './features/orden-completa/orden-completa.component';
 import { OrdenTrackComponent } from './features/orden-track/orden-track.component';
 import { SobreNosotrosComponent } from './features/sobre-nosotros/sobre-nosotros.component';
+import { ChatModule } from './features/chat/chat.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { SobreNosotrosComponent } from './features/sobre-nosotros/sobre-nosotros
     ElegirMetodoPagoComponent,
     OrdenCompletaComponent,
     OrdenTrackComponent,
-    SobreNosotrosComponent
+    SobreNosotrosComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +43,7 @@ import { SobreNosotrosComponent } from './features/sobre-nosotros/sobre-nosotros
     NgxSliderModule,
     FormsModule,
     ReactiveFormsModule,
+    ChatModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,45 @@
+<div class="max-w-3xl mx-auto p-6">
+  <h1 class="text-2xl font-bold text-center mb-6">Trackea tu pedido</h1>
+
+  <div class="flex items-center gap-2 mb-6">
+    <label for="orderId" class="w-24 font-medium">ID Orden:</label>
+    <input id="orderId" [(ngModel)]="orderId" type="text" placeholder="Ingrese su ID"
+           class="flex-grow border rounded p-2" />
+    <button (click)="trackOrder()" class="bg-black text-white px-4 py-2 rounded">Trackear Pedido</button>
+  </div>
+
+  <div *ngIf="orderFound" class="bg-white p-6 rounded shadow-md mt-6">
+    <h2 class="text-xl font-semibold mb-4">Estado del pedido</h2>
+    <p class="mb-4">ID Orden: <span class="font-medium">#{{ orderId }}</span></p>
+
+    <div class="flex justify-between items-center relative">
+      <div class="absolute top-1/2 left-0 right-0 h-1 bg-gray-300 z-0"></div>
+
+      <ng-container *ngFor="let step of orderSteps; let i = index">
+        <div class="flex flex-col items-center z-10">
+          <div [ngClass]="step.completed ? 'bg-black text-white' : 'bg-white text-gray-400'"
+               class="w-10 h-10 border-2 rounded-full flex items-center justify-center text-xl mb-2">
+            <i [class]="step.icon"></i>
+          </div>
+          <div class="text-sm text-center">{{ step.label }}</div>
+          <div class="text-xs text-gray-500 mt-1">{{ step.date }}</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div *ngIf="orderNotFound" class="text-red-600 font-medium mt-4">ID Orden no encontrado. Intenta de nuevo.</div>
+</div>
+<div class="flex items-center">
+  <div class="flex gap-4 mt-4">
+  <button (click)="simularAvanceDias()" class="bg-gray-500  text-white px-4 py-2 rounded">
+    Simular avance
+  </button>
+  <button (click)="reiniciarTracking()" class="bg-red-500 text-white px-4 py-2 rounded">
+  Reiniciar Tracking
+</button>
+
+</div>
+</div>
+
+

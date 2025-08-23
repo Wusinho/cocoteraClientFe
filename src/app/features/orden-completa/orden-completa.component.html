@@ -1,0 +1,45 @@
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-center mb-2">Orden Completa</h1>
+  <p class="text-center text-gray-600 mb-8">Tu orden ha sido completada! Gracias. Tu orden fue recibida.</p>
+
+  <div class="bg-amber-100 p-4 rounded mb-6 grid grid-cols-1 sm:grid-cols-4 gap-4 text-sm text-gray-800">
+    <div>
+      <div class="font-semibold">ID Orden</div>
+      <div>#{{ idOrden }}</div>
+    </div>
+    <div>
+      <div class="font-semibold">Metodo de pago</div>
+      <div>{{ metodoPago }}</div>
+    </div>
+    <div>
+      <div class="font-semibold">ID Transacción</div>
+      <div>{{ idTransaccion }}</div>
+    </div>
+    <div>
+      <div class="font-semibold">Tiempo estimado de Delivery </div>
+      <div>{{ fechaEntrega }}</div>
+    </div>
+  </div>
+
+  <div class="bg-white p-4 rounded shadow">
+    <h2 class="text-lg font-semibold mb-4">Detalle de la orden</h2>
+
+    <div *ngFor="let item of productos" class="flex items-center justify-between py-2 border-b">
+      <div class="flex items-center space-x-4">
+        <img [src]="item.imagen" alt="Producto" class="w-16 h-16 object-cover rounded" />
+        <div>
+          <div class="font-semibold">{{ item.nombre }}</div>
+          <div class="text-gray-500 text-sm">Color: {{ item.color }} | Size: {{ item.talla }}</div>
+        </div>
+      </div>
+      <div class="text-right font-medium">S/.{{ (item.precio * item.cantidad).toFixed(2) }}</div>
+    </div>
+
+    <div class="text-right mt-4 space-y-1 text-sm text-gray-700">
+      <div>Delivery: <span class="font-semibold">S/.{{ resumenPedido?.delivery || 0 }}</span></div>
+      <div>Impuestos: <span class="font-semibold">S/.{{ resumenPedido?.impuestos.toFixed(2) || 0 }}</span></div>
+      <div>Descuento: <span class="font-semibold text-green-600">- S/.{{ resumenPedido?.descuento.toFixed(2) || 0 }}</span></div>
+      <div class="font-bold text-lg text-black mt-2">Total: S/.{{ resumenPedido?.total.toFixed(2) || 0 }}</div>
+    </div>
+  </div>
+</div>

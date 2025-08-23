@@ -1,0 +1,146 @@
+<div class="container mx-auto px-4 py-8">
+  <h2 class="text-3xl text-center font-bold mb-6">Detalle del producto</h2>
+
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+  <div>
+    <img [src]="producto.imagen" [alt]="producto.nombre" class="h-70 w-full object-cover rounded-2xl mb-4" />
+  </div>
+
+  <div>
+    <h3 class="text-2xl font-bold mb-2">{{ producto.nombre }}</h3>
+
+    <div class="flex items-center gap-1 mb-2">
+      <ng-container *ngFor="let star of [1,2,3,4,5]">
+        <i [ngClass]="star <= producto.rating ? 'text-yellow-400' : 'text-gray-300'">★</i>
+      </ng-container>
+      <span class="text-sm text-gray-500 ml-2">{{ producto.rating }}</span>
+    </div>
+
+    <p class="text-2xl text-pink-600 font-semibold mb-4">S/. {{ producto.precio }}</p>
+    <p class="text-gray-700 mb-4">{{ producto.descripcion }}</p>
+
+    <div class="mb-4">
+      <h4 class="font-semibold mb-1">Color</h4>
+      <div class="flex gap-2">
+        <button class="w-6 h-6 rounded-full border border-gray-300" [ngStyle]="{ 'background-color': producto.colorHex || '#000' }"></button>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <h4 class="font-semibold mb-1">Talla</h4>
+      <div class="flex gap-2">
+        <button 
+          *ngFor="let talla of ['S', 'M', 'L', 'XL']"
+          (click)="seleccionarTalla(talla)"
+          [ngClass]="{
+            'bg-black text-white border-black': tallaSeleccionada === talla,
+            'bg-white text-black border-gray-400': tallaSeleccionada !== talla
+          }"
+          class="px-3 py-1 border rounded-md transition-colors duration-200"
+        >
+          {{ talla }}
+        </button>
+      </div>
+    </div>
+
+
+    <div class="mb-4">
+  <h4 class="font-semibold mb-1">Cantidad</h4>
+  <div class="flex items-center gap-2">
+    <button class="w-8 h-8 border rounded" (click)="disminuirCantidad()">-</button>
+    <input type="number" [(ngModel)]="cantidad" min="1" class="w-16 border rounded text-center" />
+    <button class="w-8 h-8 border rounded" (click)="aumentarCantidad()">+</button>
+  </div>
+</div>
+
+
+    <div class="flex items-center gap-4 mt-6">
+      <button class="bg-pink-600 text-white px-6 py-2 rounded-xl">Agregar al carrito</button>
+      <button class="bg-yellow-600 border px-6 py-2 rounded-xl">Comprar ahora</button>
+      <button (click)="agregarAWishlist()" class="border py-2 text-gray-600 rounded-xl px-3 text-center text-xl">
+        <i 
+          class="fas fa-heart"
+          [ngClass]="{
+            'text-pink-600': producto.enListaDeseos,
+            'text-white drop-shadow-[0_0_2px_black] hover:text-black': !producto.enListaDeseos
+          }">
+        </i>
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+  <div class="mb-12">
+    <h3 class="text-2xl font-bold mb-4">Últimas Reseñas</h3>
+    <div class="space-y-4">
+      <div class="border p-4 rounded-xl">
+        <div class="flex justify-between mb-1">
+          <span class="font-semibold">María Pérez</span>
+          <span class="text-sm text-gray-500">Hace 3 días</span>
+        </div>
+        <div class="flex items-center gap-2 text-yellow-400 mb-1">
+          <span>★★★★☆</span><span class="text-sm text-gray-600">4.0</span>
+        </div>
+        <p class="font-semibold">Buen ajuste</p>
+        <p class="text-sm text-gray-700">Me gustó mucho cómo calza, el color también es muy bonito.</p>
+      </div>
+      <div class="border p-4 rounded-xl">
+        <div class="flex justify-between mb-1">
+          <span class="font-semibold">María Pérez</span>
+          <span class="text-sm text-gray-500">Hace 3 días</span>
+        </div>
+        <div class="flex items-center gap-2 text-yellow-400 mb-1">
+          <span>★★★★☆</span><span class="text-sm text-gray-600">4.0</span>
+        </div>
+        <p class="font-semibold">Buen ajuste</p>
+        <p class="text-sm text-gray-700">Me gustó mucho cómo calza, el color también es muy bonito.</p>
+      </div>
+      <div class="border p-4 rounded-xl">
+        <div class="flex justify-between mb-1">
+          <span class="font-semibold">María Pérez</span>
+          <span class="text-sm text-gray-500">Hace 3 días</span>
+        </div>
+        <div class="flex items-center gap-2 text-yellow-400 mb-1">
+          <span>★★★★☆</span><span class="text-sm text-gray-600">4.0</span>
+        </div>
+        <p class="font-semibold">Buen ajuste</p>
+        <p class="text-sm text-gray-700">Me gustó mucho cómo calza, el color también es muy bonito.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-12">
+    <h3 class="text-2xl font-bold mb-4">Escribe una reseña</h3>
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="text" placeholder="Nombre" class="border p-2 rounded" />
+      <input type="email" placeholder="Email" class="border p-2 rounded" />
+      <div class="col-span-2">
+        <label class="block font-semibold mb-1">Puntuación</label>
+        <div class="flex gap-1 text-yellow-400">
+          <i class="cursor-pointer">★</i><i class="cursor-pointer">★</i><i class="cursor-pointer">★</i><i class="cursor-pointer">★</i><i class="cursor-pointer">☆</i>
+        </div>
+      </div>
+      <input type="text" placeholder="Título de la reseña" class="col-span-2 border p-2 rounded" />
+      <textarea rows="4" placeholder="Escribe tu experiencia" class="col-span-2 border p-2 rounded"></textarea>
+      <button type="submit" class="bg-pink-600 text-white px-6 py-2 rounded-xl col-span-2">Enviar reseña</button>
+    </form>
+  </div>
+
+  <div>
+    <h3 class="text-2xl font-bold mb-4">Productos relacionados</h3>
+    <div class="relative overflow-hidden">
+      <div
+        #carousel
+        class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
+      >
+        <app-product-card
+          *ngFor="let product  of productosRecomendados"
+          class="snap-start shrink-0 w-[calc(25%-24px)] mx-3"
+          [product]="product"
+        ></app-product-card>
+      </div>
+    </div>
+  </div>
+</div>

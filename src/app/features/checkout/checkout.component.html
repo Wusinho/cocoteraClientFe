@@ -1,0 +1,97 @@
+<h1 class="text-3xl font-bold text-center p-6 mb-6">Verificación</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-6">
+
+  <form class="md:col-span-2 space-y-6">
+    <h2 class="text-2xl font-semibold">Detalles de Facturación</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block mb-1 font-medium">Nombre *</label>
+        <input type="text" placeholder="Ej. Juan" class="w-full border p-2 rounded" />
+      </div>
+      <div>
+        <label class="block mb-1 font-medium">Apellido *</label>
+        <input type="text" placeholder="Ej. Pérez" class="w-full border p-2 rounded" />
+      </div>
+    </div>
+
+    <div>
+      <label class="block mb-1 font-medium">Nombre de la empresa (opcional)</label>
+      <input type="text" placeholder="Ingrese nombre de empresa" class="w-full border p-2 rounded" />
+    </div>
+
+    <div>
+      <label class="block mb-1 font-medium">Dirección *</label>
+      <input type="text" placeholder="Ingrese su dirección" class="w-full border p-2 rounded" />
+    </div>
+
+    <div>
+      <label class="block mb-1 font-medium">Ciudad *</label>
+      <input type="text" placeholder="Ingrese su ciudad" class="w-full border p-2 rounded" />
+    </div>
+
+    <div>
+      <label class="block mb-1 font-medium">Teléfono *</label>
+      <input type="tel" placeholder="Ingrese su número" class="w-full border p-2 rounded" />
+    </div>
+
+    <div>
+      <label class="block mb-1 font-medium">Correo electrónico *</label>
+      <input type="email" placeholder="Ingrese su correo" class="w-full border p-2 rounded" />
+    </div>
+
+    <div>
+      <label class="block mb-2 font-medium">Dirección de entrega *</label>
+      <div class="flex gap-4">
+        <label class="flex items-center gap-2">
+          <input type="radio" name="direccionEntrega" checked class="accent-pink-600" />
+          Igual a la dirección de facturación
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="direccionEntrega" class="accent-pink-600" />
+          Usar una dirección diferente
+        </label>
+      </div>
+    </div>
+  </form>
+
+  <div class="border border-gray-200 rounded p-6">
+    <h3 class="text-xl font-semibold mb-4">Resumen del Pedido</h3>
+  <div class="space-y-2 text-gray-700" *ngIf="resumen">
+    <div class="flex justify-between">
+        <span>Artículos</span>
+        <span>{{ cantidadTotal }}</span>
+    </div>
+
+    <div class="flex justify-between">
+      <span>Subtotal</span>
+      <span>S/ {{ resumen.subtotal | number: '1.2-2' }}</span>
+    </div>
+
+    <div class="flex justify-between">
+      <span>Delivery</span>
+      <span>S/ {{ resumen.delivery | number: '1.2-2' }}</span>
+    </div>
+
+    <div class="flex justify-between">
+      <span>Impuestos</span>
+      <span>S/ {{ resumen.impuestos | number: '1.2-2' }}</span>
+    </div>
+
+    <div class="flex justify-between text-green-600" *ngIf="resumen.descuento > 0">
+      <span>Descuento por cupón</span>
+      <span>- S/ {{ resumen.descuento | number: '1.2-2' }}</span>
+    </div>
+
+    <div class="flex justify-between font-bold text-lg pt-2 border-t">
+      <span>Total</span>
+      <span>S/ {{ resumen.total | number: '1.2-2' }}</span>
+    </div>
+  </div>
+
+    <button (click)="irMetodoPago()" class="mt-6 w-full bg-[#4B200F] text-white py-2 rounded hover:bg-[#381808] transition">
+      Continuar con el Pago
+    </button>
+  </div>
+</div>

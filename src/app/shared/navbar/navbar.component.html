@@ -1,0 +1,46 @@
+<nav class="bg-white shadow-md">
+  <div class="max-w-[1200px] mx-auto px-6 py-3 flex items-center justify-between">
+    
+    <a routerLink="/home" class="flex items-center">
+      <img 
+        src="assets/img/La-cocotera-logo.png" 
+        alt="La Cocotera" 
+        class="h-20 max-h-[120px] object-cover block" 
+      />
+    </a>
+
+    <ul class="flex space-x-10 text-gray-700 font-medium text-base">
+      <li><a routerLink="" class="hover:text-black">Inicio</a></li>
+      <li><a routerLink="/tienda" class="hover:text-black">Tienda</a></li>
+      <li><a routerLink="/sobre-nosotros" class="hover:text-black">Sobre nosotros</a></li>
+      <li><a routerLink="/contacto" class="hover:text-black">Contacto</a></li>
+    </ul>
+
+    <div class="flex items-center space-x-6 text-xl">
+      <button aria-label="Buscar">
+        <i class="fas fa-search text-black rounded-full p-2"></i>
+      </button>
+
+      <button routerLink="/listaDeseos"  aria-label="Lista de deseos">
+        <i class="fas fa-heart text-white drop-shadow-[0_0_2px_black] rounded-full p-2  hover:text-black"></i>
+      </button>
+      <button routerLink="/carrito" aria-label="Carrito">
+        <i class="fas fa-shopping-cart text-white drop-shadow-[0_0_2px_black] rounded-full p-2 hover:text-black"></i>
+      </button>
+
+      <div class="relative dropdown-container">
+        <button aria-label="Usuario" (click)="toggleDropdown()" class="focus:outline-none">
+          <i class="fas fa-user text-white drop-shadow-[0_0_2px_black] rounded-full p-2 hover:text-black"></i>
+        </button>
+
+        <div *ngIf="mostrarDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
+          <a routerLink="/track-pedido" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Track Pedido</a>
+          <a routerLink="/perfil" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Perfil</a>
+          <a (click)="logout()" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cerrar Sesión</a>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</nav>

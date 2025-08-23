@@ -1,0 +1,84 @@
+
+<section
+  class="w-full h-[90vh] bg-cover bg-center text-white flex items-center justify-center text-left px-4 relative"
+  style="background-image: url('assets/img/baner-shop.jpg');"
+>
+  <div class="absolute top-[50%] left-[67%] max-w-xl">
+    <p class="text-lg mb-6">Explora nuestra colección diseñada para ti.</p>
+    <button routerLink="/tienda" class="bg-yellow-900 text-white font-semibold px-6 py-3 rounded hover:bg-amber-800 transition">
+  Comprar ahora
+</button>
+
+  </div>
+</section>
+
+<section class="py-12 bg-white grid grid-cols-1 md:grid-cols-3 gap-6 text-center px-4">
+  <div>
+    <i class="fas fa-truck-fast text-4xl text-black mb-4"></i>
+    <h3 class="font-bold text-lg mb-1">Delivery gratuito</h3>
+    <p class="text-gray-600">En todos los pedidos a nivel nacional</p>
+  </div>
+  <div>
+    <i class="fas fa-credit-card text-4xl text-black mb-4"></i>
+    <h3 class="font-bold text-lg mb-1">Pagos flexibles</h3>
+    <p class="text-gray-600">Aceptamos tarjetas y transferencias</p>
+  </div>
+  <div>
+    <i class="fas fa-headset text-4xl text-black mb-4"></i>
+    <h3 class="font-bold text-lg mb-1">Soporte 24/7</h3>
+    <p class="text-gray-600">Siempre disponibles para ayudarte</p>
+  </div>
+</section>
+
+
+
+<section class="h-[50vh] bg-cover bg-center text-white flex items-center justify-center px-4"
+  style="background-image: url('assets/img/promocion.jpeg');">
+</section>
+
+<section class="h-[25vh] bg-yellow-400 bg-center text-white flex items-center justify-center px-4">
+  <div class="text-center bg-black/60 p-6 rounded-lg">
+    <h2 class="text-3xl font-bold mb-2">¡Oferta por tiempo limitado!</h2>
+    <p class="text-lg mb-4">Hasta 20% de descuento en jeans seleccionadas con el codigo <span class="text-2xl font-bold mb-2">MUJER20</span></p>
+    <button class="bg-white text-black font-semibold px-5 py-2 rounded hover:bg-gray-200 transition">Ver ofertas</button>
+  </div>
+
+</section>
+
+<div class="bg-gray-50">
+  <section class="py-12 max-w-[1200px] mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Nuestros Productos</h2>
+    <div class="relative overflow-hidden">
+      <div
+        #carousel
+        class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
+      >
+        <app-product-card
+          *ngFor="let product of products"
+          class="snap-start shrink-0 w-[calc(25%-24px)] mx-3"
+          [product]="product">
+        </app-product-card>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<section class="py-12 px-4 bg-white text-center">
+  <h2 class="text-3xl font-bold mb-10">Lo que dicen nuestros clientes</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-gray-100 p-6 rounded shadow">
+      <p class="italic text-gray-700 mb-4">"Los jeans tienen un calce perfecto. Compraré otra vez!"</p>
+      <p class="font-bold">María F.</p>
+    </div>
+    <div class="bg-gray-100 p-6 rounded shadow">
+      <p class="italic text-gray-700 mb-4">"Excelente atención al cliente y calidad de casacas."</p>
+      <p class="font-bold">Luisa C.</p>
+    </div>
+    <div class="bg-gray-100 p-6 rounded shadow">
+      <p class="italic text-gray-700 mb-4">"La tienda es hermosa y fácil de usar, me encanta."</p>
+      <p class="font-bold">Diana R.</p>
+    </div>
+  </div>
+</section>

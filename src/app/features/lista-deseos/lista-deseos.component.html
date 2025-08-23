@@ -1,0 +1,48 @@
+<div class="py-10 px-4 md:px-16 bg-white min-h-screen">
+  <h1 class="text-3xl font-bold text-center mb-6">Lista de deseos</h1>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-gray-200 text-sm rounded-lg overflow-hidden">
+      <thead>
+        <tr class="bg-yellow-300 text-left text-gray-800">
+          <th class="px-4 py-3">Producto</th>
+          <th class="px-4 py-3">Precio</th>
+          <th class="px-4 py-3">Estado</th>
+          <th class="px-4 py-3 text-right"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of listaDeseos" class="border-t hover:bg-gray-50 transition-colors">
+          <td class="px-4 py-4 flex items-center gap-4">
+            <img [src]="product.imagen" alt="Imagen" class="w-16 h-16 object-cover rounded" />
+            <div>
+              <p class="font-semibold">{{ product.nombre }}</p>
+              <p class="text-gray-500 text-xs">Color: {{ product.color }} | Talla: {{ product.talla }}</p>
+            </div>
+          </td>
+          <td class="px-4 py-4 text-gray-700 font-medium">S/.{{ product.precio }}</td>
+          <td class="px-4 py-4 text-green-600 font-semibold">Disponible</td>
+          <td class="px-4 py-4 text-right">
+            <button class="bg-pink-600 hover:bg-pink-700 transition text-white px-6 py-2 rounded-xl">
+              Agregar al carrito
+            </button>
+          </td>
+        </tr>
+
+        <tr class="border-t">
+          <td colspan="4" class="px-4 py-6 text-center">
+            <div class="flex flex-col md:flex-row justify-end items-center gap-4">
+              
+              <button class="bg-red-100 hover:bg-red-200 text-red-600 font-semibold px-6 py-2 rounded-full shadow">
+                Borrar toda la lista
+              </button>
+              <button routerLink="/carrito"  class="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-2 rounded-full shadow">
+                Agregar todo al carrito
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
